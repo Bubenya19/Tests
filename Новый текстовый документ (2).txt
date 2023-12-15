@@ -1,0 +1,48 @@
+Create table Gender
+(
+
+idGender int primary key identity (1, 1),
+Gender varchar(30)
+
+)
+
+
+Create table Users
+(
+idUser int primary key identity (1, 1),
+FirstName varchar(50),
+LastName varchar(50),
+Patronymic varchar(50),
+UserName varchar(50),
+UserPassword varchar(50),
+Gender int,
+Foreign key (Gender) references Gender(idGender) 
+
+)
+
+Create table Product
+(
+idProduct int primary key identity(1, 1),
+NameProduct varchar(100)
+
+)
+
+Create table Orders
+(
+idOrder int primary key identity(1, 1),
+idClient int,
+Foreign key (idClient) references Users(idUser)
+
+)
+
+Create table Sostav
+
+(
+idSostav int primary key identity(1, 1),
+idOrder int,
+idProduct int,
+Foreign key (idProduct) references Product(idProduct),
+Foreign key (idOrder) references Orders(idOrder)
+
+
+)
